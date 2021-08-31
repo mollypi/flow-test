@@ -1,0 +1,14 @@
+apiVersion: sql.cnrm.cloud.google.com/v1beta1
+kind: SQLUser
+metadata:
+  labels:
+    app: kubeflow-pipelines
+    kf-name: kubeflow-test
+  name: kubeflow-test-kfp-root
+  namespace: gcp-dev-ops
+spec:
+  instanceRef:
+    name: kubeflow-test-kfp
+  password:
+    value: ""
+  resourceID: root

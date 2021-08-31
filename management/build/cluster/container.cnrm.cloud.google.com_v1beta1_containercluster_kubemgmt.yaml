@@ -1,0 +1,15 @@
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  annotations:
+    cnrm.cloud.google.com/remove-default-node-pool: "true"
+    gke.io/cluster: bootstrap://
+  name: kubemgmt
+  namespace: gcp-dev-ops
+spec:
+  initialNodeCount: 3
+  location: us-central1
+  releaseChannel:
+    channel: REGULAR
+  workloadIdentityConfig:
+    identityNamespace: gcp-dev-ops.svc.id.goog

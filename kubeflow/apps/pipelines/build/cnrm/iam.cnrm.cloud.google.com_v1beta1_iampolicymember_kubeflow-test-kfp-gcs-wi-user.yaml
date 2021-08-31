@@ -1,0 +1,15 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+  labels:
+    app: kubeflow-pipelines
+    kf-name: kubeflow-test
+  name: kubeflow-test-kfp-gcs-wi-user
+  namespace: gcp-dev-ops
+spec:
+  member: serviceAccount:gcp-dev-ops.svc.id.goog[kubeflow/kubeflow-pipelines-minio-gcs-gateway]
+  resourceRef:
+    apiVersion: iam.cnrm.cloud.google.com/v1beta1
+    kind: IAMServiceAccount
+    name: kubeflow-test-user
+  role: roles/iam.workloadIdentityUser

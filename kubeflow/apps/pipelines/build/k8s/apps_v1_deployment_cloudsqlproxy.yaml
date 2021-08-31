@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cloudsqlproxy
+  name: cloudsqlproxy
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudsqlproxy
+  template:
+    metadata:
+      labels:
+        app: cloudsqlproxy
+    spec:
+      containers:
+      - command:
+        - /cloud_sql_proxy
+        - -dir=/cloudsql
+        - -instances=$(GCP_CLOUDSQL_INSTANCE_NAME)=tcp:0.0.0.0:3306
+        - term_timeout=10s
+        env:
+        - name: GCP_CLOUDSQL_INSTANCE_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: gcsCloudSqlInstanceName
+              name: pipeline-install-config
+        image: gcr.io/cloudsql-docker/gce-proxy:1.14
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sleep
+              - "10"
+        name: cloudsqlproxy
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - mountPath: /cloudsql
+          name: cloudsql
+      serviceAccountName: kubeflow-pipelines-cloudsql-proxy
+      volumes:
+      - emptyDir: null
+        name: cloudsql

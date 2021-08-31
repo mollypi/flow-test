@@ -1,0 +1,14 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+  labels:
+    kf-name: kubeflow-test
+  name: kubeflow-test-user-workload-identity-user-ml-pipeline-visualizationserver
+  namespace: gcp-dev-ops
+spec:
+  member: serviceAccount:gcp-dev-ops.svc.id.goog[kubeflow/ml-pipeline-visualizationserver]
+  resourceRef:
+    apiVersion: iam.cnrm.cloud.google.com/v1beta1
+    kind: IAMServiceAccount
+    name: kubeflow-test-user
+  role: roles/iam.workloadIdentityUser

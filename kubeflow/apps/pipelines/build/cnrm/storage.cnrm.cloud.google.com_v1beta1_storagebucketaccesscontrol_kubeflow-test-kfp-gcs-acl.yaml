@@ -1,0 +1,13 @@
+apiVersion: storage.cnrm.cloud.google.com/v1beta1
+kind: StorageBucketAccessControl
+metadata:
+  labels:
+    app: kubeflow-pipelines
+    kf-name: kubeflow-test
+  name: kubeflow-test-kfp-gcs-acl
+  namespace: gcp-dev-ops
+spec:
+  bucketRef:
+    name: gcp-dev-ops-kfp
+  entity: user-kubeflow-test-user@gcp-dev-ops.iam.gserviceaccount.com
+  role: OWNER

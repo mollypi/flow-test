@@ -1,0 +1,13 @@
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeAddress
+metadata:
+  labels:
+    kf-name: kubeflow-test
+    label-one: value-one
+  name: kubeflow-test-ip
+  namespace: gcp-dev-ops
+spec:
+  addressType: EXTERNAL
+  description: Static IP for Kubeflow ingress.
+  ipVersion: IPV4
+  location: global

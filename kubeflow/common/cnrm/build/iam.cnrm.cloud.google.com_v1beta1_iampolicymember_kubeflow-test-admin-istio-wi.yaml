@@ -1,0 +1,14 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+  labels:
+    kf-name: kubeflow-test
+  name: kubeflow-test-admin-istio-wi
+  namespace: gcp-dev-ops
+spec:
+  member: serviceAccount:gcp-dev-ops.svc.id.goog[istio-system/kf-admin]
+  resourceRef:
+    apiVersion: iam.cnrm.cloud.google.com/v1beta1
+    kind: IAMServiceAccount
+    name: kubeflow-test-admin
+  role: roles/iam.workloadIdentityUser

@@ -1,0 +1,15 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+  labels:
+    app: kubeflow-pipelines
+    kf-name: kubeflow-test
+  name: kubeflow-test-kfp-cloudsql-proxy-wi-user
+  namespace: gcp-dev-ops
+spec:
+  member: serviceAccount:gcp-dev-ops.svc.id.goog[kubeflow/kubeflow-pipelines-cloudsql-proxy]
+  resourceRef:
+    apiVersion: iam.cnrm.cloud.google.com/v1beta1
+    kind: IAMServiceAccount
+    name: kubeflow-test-kfp-cloudsql
+  role: roles/iam.workloadIdentityUser

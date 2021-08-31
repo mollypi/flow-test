@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  appName: kubeflow-test
+  hostname: kubeflow-test.endpoints.gcp-dev-ops.cloud.goog
+  ingressName: envoy-ingress
+  ipName: kubeflow-test-ip
+  istioNamespace: istio-system
+  oauthSecretName: kubeflow-oauth
+  project: gcp-dev-ops
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    kustomize.component: iap-ingress
+  name: iap-ingress-config
+  namespace: istio-system

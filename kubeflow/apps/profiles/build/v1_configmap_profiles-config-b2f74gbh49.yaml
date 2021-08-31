@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  admin: molly.depew@zebra.com
+  gcp-sa: kubeflow-test-user@gcp-dev-ops.iam.gserviceaccount.com
+kind: ConfigMap
+metadata:
+  labels:
+    kustomize.component: profiles
+  name: profiles-config-b2f74gbh49
+  namespace: kubeflow

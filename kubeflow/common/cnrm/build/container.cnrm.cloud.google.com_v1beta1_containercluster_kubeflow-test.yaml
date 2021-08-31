@@ -1,0 +1,52 @@
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  clusterName: gcp-dev-ops/us-central1-c/kubeflow-test
+  labels:
+    kf-name: kubeflow-test
+    mesh_id: proj-972065465623
+  name: kubeflow-test
+  namespace: gcp-dev-ops
+spec:
+  addonsConfig:
+    httpLoadBalancing:
+      disabled: false
+  clusterAutoscaling:
+    autoProvisioningDefaults:
+      oauthScopes:
+      - https://www.googleapis.com/auth/logging.write
+      - https://www.googleapis.com/auth/monitoring
+      - https://www.googleapis.com/auth/devstorage.read_only
+      serviceAccountRef:
+        name: kubeflow-test-vm
+    enabled: true
+    resourceLimits:
+    - maximum: 128
+      resourceType: cpu
+    - maximum: 2000
+      resourceType: memory
+    - maximum: 16
+      resourceType: nvidia-tesla-k80
+  initialNodeCount: 2
+  location: us-central1-c
+  loggingService: logging.googleapis.com/kubernetes
+  minMasterVersion: "1.18"
+  monitoringService: monitoring.googleapis.com/kubernetes
+  nodeConfig:
+    imageType: cos
+    machineType: e2-standard-8
+    metadata:
+      disable-legacy-endpoints: "true"
+    oauthScopes:
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/devstorage.read_only
+    serviceAccountRef:
+      name: kubeflow-test-vm
+    workloadMetadataConfig:
+      nodeMetadata: GKE_METADATA_SERVER
+  nodeVersion: "1.18"
+  releaseChannel:
+    channel: STABLE
+  workloadIdentityConfig:
+    identityNamespace: gcp-dev-ops.svc.id.goog
