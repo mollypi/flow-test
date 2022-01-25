@@ -1,5 +1,7 @@
 # Kubeflow Blueprint On Google Cloud
 
+[![Git](https://app.soluble.cloud/api/v1/public/badges/93b85591-e3ed-4ae3-a287-a20b03ff9919.svg?orgId=561911742905)](https://app.soluble.cloud/repos/details/github.com/mollypi/flow-test?orgId=561911742905)  
+
 Follow the instruction to deploy full fledged Kubeflow on Google Cloud Kubernetes cluster. 
 
 Kubeflow is deployed as follows
